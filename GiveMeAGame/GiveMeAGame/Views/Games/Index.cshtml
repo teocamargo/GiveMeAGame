@@ -1,0 +1,50 @@
+﻿@model IEnumerable<GiveMeAGame.Models.Game>
+
+@{
+    ViewBag.Title = "Listagem de Jogos";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Incluir Jogo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GameName)
+        </th>
+        <th>
+            Emprestado Para
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.GameName)
+        </td>
+        <td>
+            @if (item.Friend != null)
+            {
+                @item.Friend.FriendName
+            }
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.GameId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.GameId }) |
+            @if (item.Friend == null)
+            {
+                @Html.ActionLink("Remover", "Delete", new { id = item.GameId }) @:|
+                @Html.ActionLink("Emprestar", "Lend", new { id = item.GameId })
+            }
+            else
+            {
+                @Html.ActionLink("Devolver", "GiveBack", new { id = item.GameId })
+            }
+        </td>
+    </tr>
+}
+
+</table>

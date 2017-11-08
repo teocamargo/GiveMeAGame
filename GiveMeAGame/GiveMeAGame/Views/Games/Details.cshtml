@@ -1,0 +1,35 @@
+﻿@model GiveMeAGame.Models.Game
+
+@{
+    ViewBag.Title = "Detalhes do Jogo";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.GameName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GameName)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Friend)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Friend.FriendName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.GameId }) |
+    @Html.ActionLink("Voltar à Lista", "Index")
+</p>

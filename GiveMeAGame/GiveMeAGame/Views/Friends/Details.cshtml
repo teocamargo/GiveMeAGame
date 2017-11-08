@@ -1,0 +1,40 @@
+﻿@model GiveMeAGame.Models.Friend
+
+@{
+    ViewBag.Title = "Detalhes do Amigo";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FriendName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FriendName)
+        </dd>
+
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Games)
+        </dt>
+
+        <dd>
+            <ul class="list-group">
+                @foreach (var item in Model.Games)
+                {
+                    <li class="list-group-item">@item.GameName</li>
+                }
+            </ul>
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.FriendId }) |
+    @Html.ActionLink("Voltar à Lista", "Index")
+</p>

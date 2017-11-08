@@ -1,0 +1,31 @@
+﻿@model GiveMeAGame.Models.Friend
+
+@{
+    ViewBag.Title = "Remover Amigo";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<h3>Tem certeza que deseja removê-lo?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.FriendName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FriendName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar à Lista", "Index")
+        </div>
+    }
+</div>
